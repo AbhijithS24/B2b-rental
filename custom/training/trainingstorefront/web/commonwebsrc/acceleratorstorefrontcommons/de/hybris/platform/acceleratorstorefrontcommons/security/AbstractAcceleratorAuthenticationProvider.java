@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
  */
 package de.hybris.platform.acceleratorstorefrontcommons.security;
 
@@ -22,8 +22,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Locale;
 
 
 /**
@@ -115,7 +113,7 @@ public abstract class AbstractAcceleratorAuthenticationProvider extends CoreAuth
 	protected void checkSiteConsistency(final AbstractAuthenticationToken authentication)
 	{
 		// check the site consistency during login
-		final UserModel currentUser = getUserService().getUserForUID(StringUtils.lowerCase(authentication.getName(), Locale.ENGLISH));
+		final UserModel currentUser = getUserService().getUserForUID(authentication.getName());
 		final BaseSiteModel currentBaseSite = getBaseSiteService().getCurrentBaseSite();
 
 		if (currentUser instanceof CustomerModel && currentBaseSite != null)

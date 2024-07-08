@@ -482,7 +482,7 @@ ACC.productorderform = {
             tableWrap.html(popupContent);
             tableWrap.find('.hidden-xs').removeClass('hidden-xs');
             tableWrap.find('.hide').removeClass('hide');
-            var scrollTopPos = $('body').scrollTop();
+            scrollTopPos = $('body').scrollTop();
             $('body').scrollTop(0);
 
             ACC.colorbox.open(titleHeader, {

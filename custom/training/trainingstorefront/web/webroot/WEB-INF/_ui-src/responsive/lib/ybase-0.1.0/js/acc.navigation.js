@@ -12,7 +12,6 @@ ACC.navigation = {
     js_enquire_offcanvas_navigation_and_ul_js_offcanvas_links: ".js-enquire-offcanvas-navigation ul.js-offcanvas-links",
     js_enquire_offcanvas_navigation_and_js_enquire_has_sub: ".js-enquire-offcanvas-navigation .js-enquire-has-sub",
     liOffcanvas_a: ".liOffcanvas a ",
-    liOffcanvas_form: ".liOffcanvas form ",
     data_toggle: "data-toggle",
     js_secondaryNavAccount: ".js-secondaryNavAccount",
     js_secondaryNavCompany: ".js-secondaryNavCompany",
@@ -94,28 +93,19 @@ ACC.navigation = {
 				.addClass("js-toggle-sm-navigation btn")
 				.append($("<span>").addClass("glyphicon glyphicon-remove")));
 
-        //create mobile Sign In button
-        if(ACC.navigation.createMobileSignInButton()) {
+        //create Sign In/Sign Out Button
+        if($(ACC.navigation.liOffcanvas_a) && $(ACC.navigation.liOffcanvas_a).length > 0){
         	sSignBtn = $("<li>").addClass("auto liUserSign")
 			.append($("<a>").addClass("userSign")
 					.attr("href", $(ACC.navigation.liOffcanvas_a)[0].href)
 					.text($(ACC.navigation.liOffcanvas_a)[0].innerHTML));
         }
 
-        //create mobile Sign Out Button
-        if(ACC.navigation.createMobileSignOutButton()) {
-            var form = $(ACC.navigation.liOffcanvas_form).clone();
-            var button = (form[0])[0];
-            button.setAttribute("style", "padding-left:50px;color:#fff;font-weight:400;display:block;background-color:inherit");
-            sSignBtn = $("<li>").addClass("auto liUserSign")
-            .append(form);
-        }
-
         //create Welcome User + expand/collapse and close button
         //This is for mobile navigation. Adding html and classes.
         var oUserInfo = $(".nav__right ul li.logged_in");
         //Check to see if user is logged in
-        if(ACC.navigation.checkIfUserLoggedIn())
+        if(oUserInfo && oUserInfo.length === 1)
         {
         	var sUserBtn = $("<li>").addClass("auto")
 			.append($("<div>")
@@ -274,19 +264,6 @@ ACC.navigation = {
         else {
             $(document).find(targetSpanSelector).removeClass(ACC.navigation.glyphicon_chevron_down).addClass(ACC.navigation.glyphicon_chevron_up);
         }
-    },
-
-    createMobileSignInButton: function() {
-        return $(ACC.navigation.liOffcanvas_a) && $(ACC.navigation.liOffcanvas_a).length > 0;
-    },
-
-    createMobileSignOutButton: function() {
-        return $(ACC.navigation.liOffcanvas_form) && $(ACC.navigation.liOffcanvas_form).length > 0;
-    },
-
-    checkIfUserLoggedIn: function() {
-        var oUserInfo = $(".nav__right ul li.logged_in");
-        return oUserInfo && oUserInfo.length === 1;
     },
 
     orderToolsNavigation: function(){

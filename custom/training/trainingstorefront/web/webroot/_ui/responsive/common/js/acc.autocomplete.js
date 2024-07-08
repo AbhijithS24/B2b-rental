@@ -125,15 +125,11 @@ ACC.autocomplete = {
         return (obj.images != null && self.options.displayProductImages) ? obj.images[0].url : null;
     },
 
-    bindDisableSearch: function ()
+	bindDisableSearch: function ()
     {
-        let $siteSearch = $(ACC.autocomplete.js_site_search_input);
-	let updateSearchBtnState = function()
-		{
-            $siteSearch.val($siteSearch.val().replace(/^\s+/gm,''));
-            $('.js_search_button').prop('disabled', $siteSearch.val() == "" ? true : false);
-        };
-        updateSearchBtnState();
-        $siteSearch.on('input', updateSearchBtnState)
+        $(ACC.autocomplete.js_site_search_input).keyup(function(){
+        	$(ACC.autocomplete.js_site_search_input).val($(ACC.autocomplete.js_site_search_input).val().replace(/^\s+/gm,''));
+            $('.js_search_button').prop('disabled', this.value == "" ? true : false);
+        })
     }
 };

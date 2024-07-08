@@ -21,7 +21,7 @@ INSERT_UPDATE Zone                  ; code[unique=true]               ; countrie
                                     ; japan                           ; JP
                                     ; china                           ; CN
                                     ; otherAsianRegions               ; VN,HK,KP,KR,MO,TW
-                                    
+
 # Zone Delivery Modes
 INSERT_UPDATE ZoneDeliveryMode      ; code[unique=true]               ; net                                                                                                                                             ; active[default=true]
                                     ; premium-net                     ; true

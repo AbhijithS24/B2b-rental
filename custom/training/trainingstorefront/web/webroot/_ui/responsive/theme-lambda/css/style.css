@@ -7978,14 +7978,6 @@ a.ui-button:active,
   filter: alpha(opacity=35);
   /* support: IE8 - See #6059 */
 }
-@font-face {
-  font-family: "Open Sans";
-  src: url('../fonts/OpenSans-VariableFont_wdth_wght.woff') format('woff'), url('../fonts/OpenSans-VariableFont_wdth_wght.ttf') format('truetype'), url('../fonts/OpenSans-Italic-VariableFont_wdth_wght.woff') format('woff'), url('../fonts/OpenSans-Italic-VariableFont_wdth_wght.ttf') format('truetype');
-}
-@font-face {
-  font-family: "Open Sans";
-  src: url('../fonts/OpenSans-VariableFont_wdth_wght.woff') format('woff'), url('../fonts/OpenSans-VariableFont_wdth_wght.ttf') format('truetype'), url('../fonts/OpenSans-Italic-VariableFont_wdth_wght.woff') format('woff'), url('../fonts/OpenSans-Italic-VariableFont_wdth_wght.ttf') format('truetype');
-}
 body {
   overflow-x: hidden;
   position: relative;

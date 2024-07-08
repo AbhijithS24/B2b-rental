@@ -12,7 +12,7 @@ ACC.tabs = {
 
 	bindTabs: function(){
 
-		var $e = $(".js-tabs");
+		$e = $(".js-tabs");
 		 var tabs = $e.accessibleTabs({
 			tabhead:'.tabhead',
 			tabbody: '.tabbody', 

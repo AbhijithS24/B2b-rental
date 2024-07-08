@@ -5,7 +5,6 @@
 <%@ taglib prefix="product" tagdir="/WEB-INF/tags/responsive/product" %>
 <%@ taglib prefix="component" tagdir="/WEB-INF/tags/shared/component" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="storepickup" tagdir="/WEB-INF/tags/responsive/storepickup" %>
 
 <spring:htmlEscape defaultHtmlEscape="true" />
 
@@ -16,7 +15,6 @@
 
 			<c:choose>
 				<c:when test="${component.popup}">
-					<storepickup:pickupStorePopup/>
 					<div class="carousel__component--carousel js-owl-carousel js-owl-lazy-reference js-owl-carousel-reference">
 						<c:forEach items="${productData}" var="product">
 

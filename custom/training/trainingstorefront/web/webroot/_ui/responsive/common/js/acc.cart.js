@@ -71,7 +71,7 @@ ACC.cart = {
     populateAndShowEditableGrid: function (element, event) {
         var readOnly = $(element).data("readOnlyMultidGrid");
         var itemIndex = $(element).data("index");
-        var grid = $(document).find("#ajaxGrid" + itemIndex);
+        grid = $(document).find("#ajaxGrid" + itemIndex);
 
         var gridEntries = $(document).find('#grid' + itemIndex);
         var strSubEntries = gridEntries.data("sub-entries");

@@ -16,7 +16,6 @@ public interface ControllerConstants
      */
     interface Views
     {
-
         interface Pages
         {
             interface Error

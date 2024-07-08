@@ -49,7 +49,7 @@ ACC.refinements = {
 
 	getInitStoreData: function(q,latitude,longitude){
 		$(".alert").remove();
-		var data = {
+		data = {
 			"q":"" ,
 			"page":"0"
 		};

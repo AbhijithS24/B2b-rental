@@ -70,7 +70,7 @@
     	
     <property name="trainingstorefront.wro.addons.template.path" value="${ext.trainingstorefront.path}/wro_addons_template.xml"/>
     	
-    <property name="trainingstorefront.wro.addons.dest.path" value="${ext.trainingstorefront.path}/web/webroot/WEB-INF/classes/wro_addons.xml"/>
+    <property name="trainingstorefront.wro.addons.dest.path" value="${ext.trainingstorefront.path}/resources/wro_addons.xml"/>
     	
     <property name="trainingstorefront.wro.group.node" value="&lt;groups xmlns=&quot;http://www.isdc.ro/wro&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://www.isdc.ro/wro wro.xsd&quot;&gt;"/>
     	
@@ -1070,7 +1070,7 @@
         		
         <patternset refid="extension.binary.filter"/>
         		
-        <exclude name="web/webroot/WEB-INF/classes/wro_addons.xml"/>
+        <exclude name="resources/wro_addons.xml"/>
         	
     </patternset>
     	
@@ -1078,7 +1078,7 @@
         		
         <patternset refid="extension.source.filter"/>
         		
-        <exclude name="web/webroot/WEB-INF/classes/wro_addons.xml"/>
+        <exclude name="resources/wro_addons.xml"/>
         	
     </patternset>
     	
@@ -1086,7 +1086,7 @@
         		
         <patternset refid="extension.production.filter"/>
         		
-        <exclude name="web/webroot/WEB-INF/classes/wro_addons.xml"/>
+        <exclude name="resources/wro_addons.xml"/>
         	
     </patternset>
     	
@@ -1094,7 +1094,7 @@
         		
         <patternset refid="extension.source.filter"/>
         		
-        <exclude name="web/webroot/WEB-INF/classes/wro_addons.xml"/>
+        <exclude name="resources/wro_addons.xml"/>
         	
     </patternset>
     	

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved.
  */
 package de.hybris.platform.b2bacceleratoraddon.controllers.secureportal;
 
@@ -98,7 +98,7 @@ public class B2BRegistrationController extends AbstractB2BRegistrationController
 		{
 			b2bRegistrationFacade.register(convertFormToData(form));
 		}
-		catch (final CustomerAlreadyExistsException e)
+		catch (final CustomerAlreadyExistsException e) //NOSONAR
 		{
 			LOG.error("Failed to register account. Account already exists.");
 			GlobalMessages.addErrorMessage(model, Localization.getLocalizedString(REGISTER_ACCOUNT_EXISTING));

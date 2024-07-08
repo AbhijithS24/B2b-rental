@@ -52,13 +52,13 @@ ACC.storefinder = {
 	},
 
 	refreshNavigation: function (){
-		var data = ACC.storefinder.storeData
+		data = ACC.storefinder.storeData
 		
 		var $storeList = $(".js-store-finder-navigation-list");
 		$storeList.empty();
 		
 		if(data){
-			for(var i = 0;i < data["data"].length;i++){
+			for(i = 0;i < data["data"].length;i++){
 				$storeList.append(ACC.storefinder.createListItemHtml(data["data"][i],i));
 			}
 	
@@ -132,7 +132,7 @@ ACC.storefinder = {
 
 
 
-			var storeData=ACC.storefinder.storeData["data"];
+			storeData=ACC.storefinder.storeData["data"];
 
 			var storeId=$(this).data("id");
 
@@ -202,7 +202,7 @@ ACC.storefinder = {
  
 	loadGoogleMap: function(){
 
-		var storeInformation = ACC.storefinder.storeId;
+		storeInformation = ACC.storefinder.storeId;
 
 		if($(ACC.storefinder.js_store_finder_map).length > 0)
 		{			
@@ -298,7 +298,7 @@ ACC.storefinder = {
 
 	getInitStoreData: function(q,latitude,longitude){
 		$(".alert").remove();
-		const data ={
+		data ={
 			"q":"" ,
 			"page":0
 		}

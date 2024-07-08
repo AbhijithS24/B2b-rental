@@ -208,7 +208,7 @@ ACC.pickupinstore = {
 		
 		$(ACC.pickupinstore.colorbox_and_js_pickup_component).data("data",data);
 
-		for(var i = 0;i < data["data"].length;i++){
+		for(i = 0;i < data["data"].length;i++){
 			$storeList.append(ACC.pickupinstore.createListItemHtml(data["data"][i],i));
 		}
 
@@ -423,7 +423,7 @@ ACC.pickupinstore = {
 	bindPickupButton : function(){
 		$(document).on("click",".js-pickup-button",function(e){
 			e.preventDefault();
-			var $e = $(this).parent().nextAll(".js-inline-layer")
+			$e = $(this).parent().nextAll(".js-inline-layer")
 			$e.addClass("open")
 
 			//$e.height($e.height())
@@ -440,7 +440,7 @@ ACC.pickupinstore = {
 	bindPickupClose : function(){
 		$(document).on("click",".js-close-inline-layer",function(e){
 			e.preventDefault();
-			var $e = $(this).parents(".js-inline-layer")
+			$e = $(this).parents(".js-inline-layer")
 
 			$e.animate({
 				height: 0
@@ -477,7 +477,7 @@ ACC.pickupinstore = {
 	
 	drawMap: function(){
 
-		var storeInformation = ACC.pickupinstore.storeId;
+		storeInformation = ACC.pickupinstore.storeId;
 
 		if($("#colorbox .js-map-canvas").length > 0)
 		{			

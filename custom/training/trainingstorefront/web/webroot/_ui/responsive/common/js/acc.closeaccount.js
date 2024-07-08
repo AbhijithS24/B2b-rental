@@ -34,7 +34,7 @@ ACC.close = {
                 type: 'POST',
                 success: function (response) {
                     ACC.colorbox.close();
-                    var url = ACC.config.encodedContextPath + '/?logout=true&closeAcc=true'
+                    var url = ACC.config.encodedContextPath + '/logout?closeAcc=true'
                     window.location.replace(url);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {

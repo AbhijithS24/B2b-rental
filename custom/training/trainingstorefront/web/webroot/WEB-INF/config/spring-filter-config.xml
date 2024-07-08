@@ -3,23 +3,22 @@
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util
 		http://www.springframework.org/schema/util/spring-util.xsd
 		http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-		
-	<context:annotation-config/> 
 
+	<context:annotation-config/>
 
 
 	<!-- tenant scoped filter -->
 
-	<bean id="storefrontTenantFilterChain" class="de.hybris.training.storefront.filters.UrlPathFilter" >
+	<bean id="storefrontTenantFilterChain" class="com.training.storefront.filters.UrlPathFilter" >
 		<property name="defaultFilter" ref="storefrontTenantDefaultFilterChain"/>
 		<property name="urlPathHelper">
 			<bean class="org.springframework.web.util.UrlPathHelper"/>
@@ -35,7 +34,7 @@
 	<util:list id="defaultStorefrontTenantDefaultFilterChainList">
 		<!-- filter for handling session failover -->
     	<ref bean="hybrisSpringSessionFilter"/>
-	
+
 		<!-- generic platform filters -->
 		<ref bean="log4jFilter"/>
 		<ref bean="storefrontSessionFilter"/>
@@ -76,20 +75,20 @@
 		<ref bean="customerLocationRestorationFilter"/>
 
 	</util:list>
-	
+
 	<bean id="storefrontTenantDefaultFilterChain" class="de.hybris.platform.servicelayer.web.PlatformFilterChain" >
 		<constructor-arg>
 			<ref bean="storefrontTenantDefaultFilterChainList"/>
 		</constructor-arg>
 	</bean>
-	
+
 	<alias name="defaultIntegrationTenantFilterChainList" alias="integrationTenantFilterChainList" />
 	<util:list id="defaultIntegrationTenantFilterChainList">
 		<!-- generic platform filters -->
 		<ref bean="storefrontSessionFilter"/>
 		<ref bean="addOnDevelopmentFilter"/>
 		<!-- filter to log the current request -->
-		<ref bean="requestLoggerFilter"/>	
+		<ref bean="requestLoggerFilter"/>
 	</util:list>
 
 	<bean id="integrationTenantFilterChain" class="de.hybris.platform.servicelayer.web.PlatformFilterChain" >
@@ -106,7 +105,7 @@
 		<property name="addContextPath" value="true"/>
 	</bean>
 
-	<bean id="urlEncoderFilter" class="de.hybris.training.storefront.filters.UrlEncoderFilter" >
+	<bean id="urlEncoderFilter" class="com.training.storefront.filters.UrlEncoderFilter" >
 		<property name="urlEncoderFacade" ref="urlEncoderFacade"/>
 		<property name="sessionService" ref="sessionService"/>
 	</bean>
@@ -115,13 +114,13 @@
 		<property name="sessionService" ref="sessionService"/>
 	</bean>
 
-	<bean id="addOnDevelopmentFilter" class="de.hybris.training.storefront.filters.AcceleratorAddOnFilter" >
-		<property name="configurationService" ref="configurationService"/>	
+	<bean id="addOnDevelopmentFilter" class="com.training.storefront.filters.AcceleratorAddOnFilter" >
+		<property name="configurationService" ref="configurationService"/>
 	</bean>
 
-	<bean id="requestLoggerFilter" class="de.hybris.training.storefront.filters.RequestLoggerFilter"/>
+	<bean id="requestLoggerFilter" class="com.training.storefront.filters.RequestLoggerFilter"/>
 
-	<bean id="cmsSiteFilter" class="de.hybris.training.storefront.filters.cms.CMSSiteFilter" >
+	<bean id="cmsSiteFilter" class="com.training.storefront.filters.cms.CMSSiteFilter" >
 		<property name="previewDataModelUrlResolver" ref="previewDataModelUrlResolver"/>
 		<property name="cmsSiteService" ref="cmsSiteService"/>
 		<property name="cmsPreviewService" ref="cmsPreviewService"/>
@@ -132,7 +131,7 @@
 		<property name="cmsPageContextService" ref="cmsPageContextService"/>
 		<property name="siteChannelValidationStrategy" ref="acceleratorSiteChannelValidationStrategy"/>
 	</bean>
-	
+
 	<bean id="acceleratorSiteChannelValidationStrategy" class="de.hybris.platform.acceleratorservices.site.strategies.impl.DefaultSiteChannelValidationStrategy">
 		<property name="supportedSiteChannels" ref="acceleratorSiteChannels" />
 	</bean>
@@ -146,8 +145,8 @@
 	<util:set id="defaultRefererExcludeUrlSet" value-type="java.lang.String">
 		<value>/**/cart/export</value>
 	</util:set>
-	
-	<bean id="storefrontFilter" class="de.hybris.training.storefront.filters.StorefrontFilter" >
+
+	<bean id="storefrontFilter" class="com.training.storefront.filters.StorefrontFilter" >
 		<property name="storeSessionFacade" ref="storeSessionFacade"/>
 		<property name="browseHistory" ref="browseHistory"/>
 		<property name="refererExcludeUrlSet" ref="refererExcludeUrlSet"/>
@@ -155,25 +154,25 @@
 		<property name="commerceCommonI18NService" ref="commerceCommonI18NService"/>
 	</bean>
 
-	<bean id="consentFilter" class="de.hybris.training.storefront.filters.ConsentFilter">
+	<bean id="consentFilter" class="com.training.storefront.filters.ConsentFilter">
 		<property name="userFacade" ref="defaultUserFacade"/>
 		<property name="anonymousConsentFacade" ref="anonymousConsentFacade"/>
 	</bean>
 
-	<bean id="cartRestorationFilter" class="de.hybris.training.storefront.filters.CartRestorationFilter" >
+	<bean id="cartRestorationFilter" class="com.training.storefront.filters.CartRestorationFilter" >
 		<property name="baseSiteService" ref="baseSiteService"/>
 		<property name="cartService" ref="cartService"/>
 		<property name="cartFacade" ref="cartFacade"/>
 		<property name="cartRestoreCookieGenerator" ref="cartRestoreCookieGenerator"/>
 		<property name="userService" ref="userService"/>
-		<property name="sessionService" ref="sessionService"/>	
+		<property name="sessionService" ref="sessionService"/>
 	</bean>
 
-	<bean id="anonymousCheckoutFilter" class="de.hybris.training.storefront.filters.AnonymousCheckoutFilter" >
+	<bean id="anonymousCheckoutFilter" class="com.training.storefront.filters.AnonymousCheckoutFilter" >
 		<property name="guestCheckoutCartCleanStrategy"  ref="guestCheckoutCartCleanStrategy" />
 	</bean>
 
-	<bean id="customerLocationRestorationFilter" class="de.hybris.training.storefront.filters.CustomerLocationRestorationFilter" >
+	<bean id="customerLocationRestorationFilter" class="com.training.storefront.filters.CustomerLocationRestorationFilter" >
 		<property name="customerLocationFacade" ref="customerLocationFacade"/>
 		<property name="customerLocationCookieGenerator" ref="customerLocationCookieGenerator"/>
 	</bean>
@@ -183,7 +182,7 @@
 		<entry key="/import/csv/*" value-ref="importCSVMultipartFilter"/>
 	</util:map>
 
-	<bean id="fileUploadFilter" class="de.hybris.training.storefront.filters.FileUploadFilter" >
+	<bean id="fileUploadFilter" class="com.training.storefront.filters.FileUploadFilter" >
 		<property name="urlFilterMapping">
 			<ref bean="fileUploadUrlFilterMappings" />
 		</property>
@@ -191,16 +190,16 @@
 	</bean>
 
 	<alias name="defaultSessionCookieGenerator" alias="sessionCookieGenerator"/>
-	<bean id="defaultSessionCookieGenerator" class="de.hybris.training.storefront.security.cookie.EnhancedCookieGenerator" >
+	<bean id="defaultSessionCookieGenerator" class="com.training.storefront.security.cookie.EnhancedCookieGenerator" >
 		<property name="cookieSecure" value="true"/>
 		<property name="cookieName" value="JSESSIONID"/>
 		<property name="cookieMaxAge" value="-1"/>
 		<property name="useDefaultPath" value="false"/>
 		<property name="httpOnly" value="true"/>
 	</bean>
-	
+
 	<alias name="defaultCartRestoreCookieGenerator" alias="cartRestoreCookieGenerator"/>
-	<bean id="defaultCartRestoreCookieGenerator" class="de.hybris.training.storefront.security.cookie.CartRestoreCookieGenerator" >
+	<bean id="defaultCartRestoreCookieGenerator" class="com.training.storefront.security.cookie.CartRestoreCookieGenerator" >
 		<property name="cookieSecure" value="true"/>
 		<property name="cookieMaxAge" value="360000000"/>
 		<property name="useDefaultPath" value="false"/>
@@ -209,21 +208,21 @@
 	</bean>
 
 	<alias name="defaultCustomerLocationCookieGenerator" alias="customerLocationCookieGenerator"/>
-	<bean id="defaultCustomerLocationCookieGenerator" class="de.hybris.training.storefront.security.cookie.CustomerLocationCookieGenerator" >
+	<bean id="defaultCustomerLocationCookieGenerator" class="com.training.storefront.security.cookie.CustomerLocationCookieGenerator" >
 		<property name="cookieSecure" value="true"/>
 		<property name="cookieMaxAge" value="360000000"/>
 		<property name="useDefaultPath" value="false"/>
 		<property name="httpOnly" value="true"/>
 		<property name="baseSiteService" ref="baseSiteService"/>
 	</bean>
-	
+
 	<alias name="defaultCookieNotificationCookieGenerator" alias="cookieNotificationCookieGenerator"/>
-	<bean id="defaultCookieNotificationCookieGenerator" class="de.hybris.training.storefront.security.cookie.CookieNotificationCookieGenerator" >
+	<bean id="defaultCookieNotificationCookieGenerator" class="com.training.storefront.security.cookie.CookieNotificationCookieGenerator" >
 		<property name="cookieSecure" value="true"/>
 		<property name="cookieMaxAge" value="360000000"/>
 		<property name="useDefaultPath" value="true"/>
 	</bean>
-	
+
 	<bean id="importCSVMultipartFilter" class="org.springframework.web.multipart.support.MultipartFilter">
 		<property name="multipartResolverBeanName" value="importCSVMultipartResolver"/>
 	</bean>

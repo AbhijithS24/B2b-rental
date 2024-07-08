@@ -15,7 +15,7 @@
 	<!-- System Setup -->
 
 	<bean id="yAcceleratorInitialDataSystemSetup"
-	      class="de.hybris.training.initialdata.setup.InitialDataSystemSetup"
+	      class="com.training.initialdata.setup.InitialDataSystemSetup"
 	      parent="abstractCoreSystemSetup">
 		<property name="coreDataImportService" ref="coreDataImportService"/>
 		<property name="sampleDataImportService" ref="sampleDataImportService"/>

@@ -3,7 +3,7 @@
 -->
 <groups xmlns="http://www.isdc.ro/wro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.isdc.ro/wro wro.xsd">
-
+	
 	<import>classpath:wro_addons.xml</import>
 
 	<group name="alpha_responsive">
@@ -13,12 +13,12 @@
 	<group name="lambda_responsive">
 		<css>/_ui/responsive/theme-lambda/css/style.css</css>
 	</group>
-
+	
 	<group name="all_responsive">
-
+        
 		<!-- jquery -->
-		<js minimize="false">/_ui/responsive/common/js/jquery-3.7.0.min.js</js>
-
+		<js minimize="false">/_ui/responsive/common/js/jquery-3.6.0.min.js</js>
+		
 		<!-- plugins -->
 		<js minimize="false">/_ui/responsive/common/js/enquire.min.js</js>
 		<js>/_ui/responsive/common/js/Imager.min.js</js>
@@ -84,15 +84,9 @@
 		<js>/_ui/responsive/common/js/acc.quickorder.js</js>
 		<js>/_ui/responsive/common/js/acc.csv-import.js</js>
 		<js>/_ui/responsive/common/js/_autoload.js</js>
-
+		
 		<!-- Cms Action JavaScript files -->
-		<js>/_ui/responsive/common/js/cms/addtocartaction.js</js>
-		<js>/_ui/responsive/common/js/cms/listaddtocartaction.js</js>
-		<js>/_ui/responsive/common/js/cms/listorderformaction.js</js>
-		<js>/_ui/responsive/common/js/cms/listpickupinstoreaction.js</js>
-		<js>/_ui/responsive/common/js/cms/pickupinstoreaction.js</js>
-		<js>/_ui/responsive/common/js/cms/vieworderaction.js</js>
-		<js>/_ui/responsive/common/js/cms/viewstoreaction.js</js>
+        <js>/_ui/responsive/common/js/cms/*.js</js>
     </group>
-
-</groups>
+   
+</groups>       

@@ -42,8 +42,6 @@ public class BudgetManagementPageController extends MyCompanyPageController
 {
 	private static final Logger LOG = Logger.getLogger(BudgetManagementPageController.class);
 
-	private static final String ERROR_NUMERIC_OUT_OF_RANGE = "numeric value out of range";
-
 	@RequestMapping(method = RequestMethod.GET)
 	@RequireHardLogIn
 	public String manageBudgets(@RequestParam(value = "page", defaultValue = "0") final int page,
@@ -145,7 +143,6 @@ public class BudgetManagementPageController extends MyCompanyPageController
 			LOG.warn("Exception while saving the budget details " + e);
 			model.addAttribute(b2BBudgetForm);
 			GlobalMessages.addErrorMessage(model, "form.global.error");
-			checkExceptionAndUpdateError(e, bindingResult);
 			return editBudgetsDetails(b2BBudgetForm.getOriginalCode(), model);
 		}
 		final ContentPageModel organizationManagementPage = getContentPageForLabelOrId(ORGANIZATION_MANAGEMENT_CMS_PAGE);
@@ -208,7 +205,7 @@ public class BudgetManagementPageController extends MyCompanyPageController
 		{
 			LOG.warn("Exception while saving the budget details " + e);
 			model.addAttribute(b2BBudgetForm);
-			checkExceptionAndUpdateError(e, bindingResult);
+			bindingResult.rejectValue("code", "text.company.budget.code.exists.error.title");
 			GlobalMessages.addErrorMessage(model, "form.global.error");
 			return getAddBudgetPage(model);
 		}
@@ -310,19 +307,5 @@ public class BudgetManagementPageController extends MyCompanyPageController
 		model.addAttribute("breadcrumbs", breadcrumbs);
 		model.addAttribute(ThirdPartyConstants.SeoRobots.META_ROBOTS, ThirdPartyConstants.SeoRobots.NOINDEX_NOFOLLOW);
 		return viewBudgetUniUrl;
-	}
-
-	private void checkExceptionAndUpdateError(final Exception e, final BindingResult bindingResult)
-	{
-		final String msg = e.getMessage();
-		// as only budget is number, so we can mark invalid here directly
-		if (msg.contains(ERROR_NUMERIC_OUT_OF_RANGE))
-		{
-			bindingResult.rejectValue("budget", "text.company.manageBudgets.budget.invalid");
-		}
-		else
-		{
-			bindingResult.rejectValue("code", "text.company.budget.code.exists.error.title");
-		}
 	}
 }

@@ -213,7 +213,7 @@ ACC.savedcarts = {
             var maxchars = 255;
 			var value=$(ACC.savedcarts.localized_val).attr('value');
 			var tlength = $(this).val().length;
-			var remain = maxchars - parseInt(tlength);
+			remain = maxchars - parseInt(tlength);
         	$('#remain').text(value+' : '+remain);
 		});
 		
@@ -221,7 +221,7 @@ ACC.savedcarts = {
 			var maxchars = 255;
 			var value=$(ACC.savedcarts.localized_val).attr('value');
 			var tlength = $(this).val().length;
-			var remain = maxchars - parseInt(tlength);
+			remain = maxchars - parseInt(tlength);
         	$('#remainTextArea').text(value+' : '+remain);
 		});
 		
@@ -250,8 +250,8 @@ ACC.savedcarts = {
 			var arrCartIdAndRow = cartIdRowMapping.split(',');
 			var mapCartRow = new Object();
 			var cartCodes = [];
-			for (const value of arrCartIdAndRow) {
-				var arrValue = value.split(":");
+			for (i = 0; i < arrCartIdAndRow.length; i++) {
+				var arrValue = arrCartIdAndRow[i].split(":");
 				if (arrValue != "") {
 					mapCartRow[arrValue[0]] = arrValue[1];
 					cartCodes.push(arrValue[0]);
@@ -278,8 +278,8 @@ ACC.savedcarts = {
 				if (data != undefined) {
 					var hidden = "hidden";
 					var rowId = "#row-";
-					for (const value of data) {
-						var cart = value;
+					for (i = 0; i < data.length; i++) {
+						var cart = data[i];
 
 						var index = $.inArray(cart.code, cartCodes);
 						if (index > -1) {

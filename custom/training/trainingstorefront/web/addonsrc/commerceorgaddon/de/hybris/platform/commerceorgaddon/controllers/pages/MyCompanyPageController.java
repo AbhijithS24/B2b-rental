@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 SAP SE or an SAP affiliate company. All rights reserved.
+ * Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
  */
 package de.hybris.platform.commerceorgaddon.controllers.pages;
 
@@ -56,7 +56,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -435,7 +434,7 @@ public class MyCompanyPageController extends AbstractSearchPageController
 		try
 		{
 			b2bUserFacade.updateCustomer(b2bCustomerData);
-			b2bCustomerData.setUid(b2BCustomerForm.getEmail().toLowerCase(Locale.getDefault()));
+			b2bCustomerData.setUid(b2BCustomerForm.getEmail().toLowerCase());
 			b2BCustomerForm.setUid(b2bCustomerData.getUid());
 			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.CONF_MESSAGES_HOLDER, "text.confirmation.user.added");
 		}
@@ -449,7 +448,7 @@ public class MyCompanyPageController extends AbstractSearchPageController
 				bindingResult.rejectValue("email", "text.manageuser.error.email.exists.title");
 				GlobalMessages.addErrorMessage(model, FORM_GLOBAL_ERROR);
 				model.addAttribute(B2B_CUSTOMER_FORM, b2BCustomerForm);
-				return editUser(b2BCustomerForm.getEmail(), model);
+				return editUser(b2BCustomerForm.getUid(), model);
 			}
 			else
 			{
@@ -568,7 +567,7 @@ public class MyCompanyPageController extends AbstractSearchPageController
 		try
 		{
 			b2bUserFacade.updateCustomer(b2bCustomerData);
-			b2bCustomerData.setUid(b2BCustomerForm.getEmail().toLowerCase(Locale.getDefault()));
+			b2bCustomerData.setUid(b2BCustomerForm.getEmail().toLowerCase());
 			GlobalMessages.addFlashMessage(redirectModel, GlobalMessages.CONF_MESSAGES_HOLDER, "text.confirmation.user.edited");
 		}
 		catch (final ModelSavingException e)
